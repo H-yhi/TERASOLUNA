@@ -1,0 +1,15 @@
+<!--
+Maven Archetypeで作成したプロジェクトでは、x.xx.fw.9999形式のメッセージIDを、
+・エラー画面に表示するメッセージ
+・例外発生時に出力するエラーログ
+
+カスタマイズ方法
+BeanIDがexceptionCodeResolverのBean定義内で指定している例外コード(メッセージID)のプロジェクト区分の暫定値「xx」を、適切な値に修正する。
+-->
+
+<bean id="exceptionCodeResolver"
+    class="org.terasoluna.gfw.common.exception.SimpleMappingExceptionCodeResolver">
+    <!-- ... -->
+            <entry key="ResourceNotFoundException" value="e.xx.fw.5001" />
+    <!-- ... -->
+</bean>

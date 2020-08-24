@@ -1,0 +1,40 @@
+<!-- POMファイルのプロジェクト情報 -->
+
+<!-- ... -->
+
+<name>TERASOLUNA Server Framework for Java (5.x) Web Blank Multi Project</name>
+<description>Web Blank Multi Project using TERASOLUNA Server Framework for Java (5.x)</description>
+<url>http://terasoluna.org</url>
+<inceptionYear>2014</inceptionYear>
+<licenses>
+    <license>
+        <name>Apache License, Version 2.0</name>
+        <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        <distribution>manual</distribution>
+    </license>
+</licenses>
+<organization>
+    <name>TERASOLUNA Framework Team</name>
+    <url>http://terasoluna.org</url>
+</organization>
+
+<!-- ... -->
+
+<!--
+・プロジェクト名(name要素)
+・プロジェクト説明(description要素)
+・プロジェクトURL(url要素)
+・プロジェクト創設年(inceptionYear要素)
+・プロジェクトライセンス(licenses要素)
+・プロジェクト組織(organization要素)
+-->
+
+<!--
+データソースの設定
+データソースとしてApache Commons DBCPを使用する場合は、以下のプロパティにアプリケーション稼働時に利用するデータベースにアクセスするための接続情報を指定する。
+-->
+<dependency>
+    <groupId>com.h2database</groupId>
+    <artifactId>h2</artifactId>
+    <scope>runtime</scope>
+</dependency>
