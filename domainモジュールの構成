@@ -1,0 +1,53 @@
+artifactId-domain
+    ├── pom.xml  ... (1)
+    └── src
+        ├── main
+        │   ├── java
+        │   │   └── com
+        │   │       └── example
+        │   │           └── project
+        │   │               └── domain  ... (2)
+        │   │                   ├── model
+        │   │                   ├── repository
+        │   │                   └── service
+        │   └── resources
+        │       └── META-INF
+        │           ├── dozer  ... (3)
+        │           └── spring  ... (4)
+        │               ├── artifactId-codelist.xml  ... (5)
+        │               ├── artifactId-domain.xml  ... (6)
+        │               └── artifactId-infra.xml  ... (7)
+        └── test
+    ├── java
+    │   └── com
+    │       └── example
+    │           └── project
+    │               └── domain
+    │                   ├── repository
+    │                   └── service
+    └── resources
+        └── test-context.xml  ... (8)
+
+(1)domainモジュールの構成を定義するPOM(Project Object Model)ファイル。 このファイルでは、以下の定義を行う。
+　依存ライブラリとビルド用プラグインの定義
+　jarファイルを作成するための定義
+
+(2)ドメイン層のクラスを格納するためのパッケージ。
+
+(3)Dozer(Bean Mapper)のマッピング定義ファイルを格納するディレクトリ。
+　作成時点では空のディレクトリである。 マッピングファイルが必要になった場合(高度なマッピングが必要になった場合)は、 このディレクトリ配下に格納すると、自動的にマッピングファイルが読み込まれる。
+
+(4)Spring FrameworkのBean定義ファイルとプロパティファイルを格納するディレクトリ。
+
+(5)コードリストを定義するためのBean定義ファイル。
+
+(6)ドメイン層のコンポーネントを定義するためのBean定義ファイル。
+　このファイルには、以下のBeanを定義する。
+　・ドメイン層のコンポーネント(Service, Repositoryなど)
+　・インフラストラクチャ層のコンポーネント(インフラストラクチャ層のコンポーネントが定義されているBean定義ファイルをimportする)
+　・Spring Frameworkから提供されているトランザクション管理用のコンポーネント
+
+(7)インフラストラクチャ層のコンポーネントを定義するためのBean定義ファイル。
+　このファイルには、O/R MapperなどのBean定義を行う。
+
+(8)ドメイン層のユニットテスト用のコンポーネントを定義するためのBean定義ファイル。

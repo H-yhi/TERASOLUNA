@@ -1,0 +1,113 @@
+artifactId-web
+    ├── pom.xml  ... (1)
+    └── src
+    ├── main
+    │   ├── java
+    │   │   └── com
+    │   │       └── example
+    │   │           └── project
+    │   │               └── app  ... (2)
+    │   │                   └── welcome
+    │   │                       └── HelloController.java  ... (3)
+    │   ├── resources
+    │   │   ├── META-INF
+    │   │   │   ├── dozer  ... (4)
+    │   │   │   └── spring  ... (5)
+    │   │   │       ├── application.properties  ... (6)
+    │   │   │       ├── applicationContext.xml  ... (7)
+    │   │   │       ├── spring-mvc.xml  ... (8)
+    │   │   │       └── spring-security.xml  ... (9)
+    │   │   └── i18n  ... (10)
+    │   │       └── application-messages.properties  ... (11)
+    │   └── webapp
+    │       ├── WEB-INF
+    │       │   ├── tiles  ... (12)
+    │       │   │   └── tiles-definitions.xml
+    │       │   ├── views  ... (13)
+    │       │   │   ├── common
+    │       │   │   │   ├── error  ... (14)
+    │       │   │   │   │   ├── accessDeniedError.jsp
+    │       │   │   │   │   ├── businessError.jsp
+    │       │   │   │   │   ├── dataAccessError.jsp
+    │       │   │   │   │   ├── invalidCsrfTokenError.jsp
+    │       │   │   │   │   ├── missingCsrfTokenError.jsp
+    │       │   │   │   │   ├── resourceNotFoundError.jsp
+    │       │   │   │   │   ├── systemError.jsp
+    │       │   │   │   │   ├── transactionTokenError.jsp
+    │       │   │   │   │   └── unhandledSystemError.html
+    │       │   │   │   └── include.jsp  ... (15)
+    │       │   │   ├── layout  ... (16)
+    │       │   │   │   ├── header.jsp
+    │       │   │   │   └── template.jsp
+    │       │   │   └── welcome
+    │       │   │       └── home.jsp  ... (17)
+    │       │   └── web.xml  ... (18)
+    │       └── resources  ... (19)
+    │           └── app
+    │               └── css
+    │                   └── styles.css  ... (20)
+    └── test
+        ├── java
+        └── resources
+
+(1)webモジュールの構成を定義するPOM(Project Object Model)ファイル。 このファイルでは、以下の定義を行う。
+　依存ライブラリとビルド用プラグインの定義
+  warファイルを作成するための定義
+
+(2)アプリケーション層のクラスを格納するためのパッケージ。
+　REST APIを構築する場合は、パッケージ名をapiといった感じの名前にしておくと、 コンポーネントの種類が識別しやすくなる。
+
+(3)Welcomeページを表示するためのリクエストを受け取るためのControllerクラス。
+
+(4)Dozer(Bean Mapper)のマッピング定義ファイルを格納するディレクトリ。
+　作成時点では空のディレクトリである。 マッピングファイルが必要になった場合(高度なマッピングが必要になった場合)は、 このディレクトリ配下に格納すると、自動的にマッピングファイルが読み込まれる。
+
+(5)Spring FrameworkのBean定義ファイルとプロパティファイルを格納するディレクトリ。
+
+(6)アプリケーション層で使用する設定値を定義するプロパティファイル。
+　作成時点では、空のファイルである。
+
+(7)Webアプリケーション用のアプリケーションコンテキストを作成するためのBean定義ファイル。
+　このファイルには、以下のBeanを定義する。
+　・Webアプリケーション全体で使用するコンポーネント
+　・ドメイン層のコンポーネント(ドメイン層のコンポーネントが定義されているBean定義ファイルをimportする)
+
+(8)DispatcherServlet用のアプリケーションコンテキストを作成するためのBean定義ファイル。
+　このファイルには、以下のBeanを定義する。
+　・Spring MVCのコンポーネント
+　・アプリケーション層のコンポーネント
+　REST APIを構築する場合は、ファイル名をspring-mvc-api.xmlといった感じの名前にしておくと、 アプリケーションの種類が識別しやすくなる。
+
+(9)Spring Securityのコンポーネントを定義するためのBean定義ファイル。
+　このファイルは、Webアプリケーション用のアプリケーションコンテキストを作成する際に読み込む。
+
+(10)アプリケーション層で使用するメッセージ定義ファイルを格納するディレクトリ。
+
+(11)アプリケーション層で使用するメッセージを定義するプロパティファイル。
+　作成時点では、いくつかの汎用的なメッセージが定義されている。
+
+(12)Tilesの設定ファイルを格納するディレクトリ。
+
+(13)Viewを構築するテンプレートファイル(JSPなど)を格納するディレクトリ。
+
+(14)エラー画面を表示するためのJSP及びHTMLを格納するディレクトリ。
+　作成時点では、アプリケーション実行時に発生する可能性があるエラーに対応するJSP(HTML)が格納されている。
+
+(15)インクルード用の共通JSPファイル。
+　このファイルは、全てのJSPファイルの先頭にインクルードされる。
+
+(16)Tilesのレイアウト用のJSPファイルを格納するディレクトリ。
+
+(17)Welcomeページを表示するJSPファイル。
+
+(18)Webアプリケーションの構成定義ファイル。
+
+(19)静的なリソースファイルを格納するディレクトリ。
+　このディレクトリは、リクエストの内容によって応答する内容がかわらないファイルを格納する。 具体的には以下のファイルを格納する。
+　・JavaScriptファイル
+　・CSSファイル
+　・画像ファイル
+　・HTMLファイル
+　Spring MVCが提供する静的リソースの管理メカニズムを適用しやすくするために、 専用のディレクトリを設ける構成を採用している。
+
+(20)アプリケーション全体に適用する画面スタイルを定義するCSSファイル。
