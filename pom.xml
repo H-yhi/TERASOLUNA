@@ -38,3 +38,14 @@
     <artifactId>h2</artifactId>
     <scope>runtime</scope>
 </dependency>
+
+<!-- (1) -->
+<dependency>
+    <groupId>org.apache.tomcat.embed</groupId>
+    <artifactId>tomcat-embed-el</artifactId>
+    <scope>test</scope> <!-- (2) -->
+</dependency>
+<!--
+(1) スタンドアロン環境で動かすプロジェクトの pom.xml ファイルに、 Expression Language用のクラスが格納されているライブラリを追加する。
+(2) JUnitを実行するために依存ライブラリが必要になる場合は、スコープは testが適切である。
+-->
