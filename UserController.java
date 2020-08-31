@@ -8,6 +8,7 @@
 　hasErrors()の結果がtrueの場合は、入力値に問題があるため、フォーム表示画面に戻す。
 (5)入力内容確認画面から新規作成処理にリクエストを送る際にも、入力チェックを必ず再実行すること。
 　途中でデータを改ざんすることは可能であるため、必ず業務処理の直前で入力チェックは必要である。
+(6)「ユーザー登録」フォーム初期表示時に、一件の住所フォームを表示させるために、フォームオブジェクトを編集する。
 */
 package com.example.sample.app.validation;
 
@@ -23,9 +24,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class UserController {
 
   @ModelAttribute
-  public UserForm setupForm() {
-    return new UserForm();
-  }
+    public UserForm setupForm() {
+        UserForm form = new UserForm();
+        List<AddressForm> addresses = new ArrayList<AddressForm>();
+        addresses.add(new AddressForm());
+        form.setAddresses(addresses); // (6)
+        return form;
+    }
 
   @RequestMapping(value = "create", method = RequestMethod.GET, params = "form")
   public String createForm() {

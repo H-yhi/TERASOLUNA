@@ -26,6 +26,11 @@ public class UserForm implements Serializable {
   @Max(200) // (6)
   private Integer age;
 
+  @NotNull
+  @Size(min = 1, max = 3) // (7)
+  @Valid
+  private List<AddressForm> addresses;
+
   // omitted setter/getter
 }
 
@@ -57,4 +62,8 @@ E-mail形式の要件が@Email のチェックと合致しない場合は、java
 
 /*
 (6)対象のフィールドが指定した数値の以下であることを示すjavax.validation.constraints.Maxを付ける。
+*/
+
+/*
+(7)コレクションのサイズチェックにも、@Sizeアノテーションを使用できる。
 */
